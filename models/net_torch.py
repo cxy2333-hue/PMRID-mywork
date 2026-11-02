@@ -165,6 +165,17 @@ class Network(nn.Module):
         return pred
 
 
+def get_loss_l1(pred: torch.Tensor, label: torch.Tensor, norm_k: torch.Tensor):
+    """逐样本 L1 并按 k-sigma 归一化增益加权（对应 net_mge.py 中同名函数）。
+
+    norm_k: [N] 或 [N, 1, 1, 1]
+    """
+    B = pred.shape[0]
+    L1 = torch.abs(pred - label).reshape(B, -1).mean(dim=1)
+    L1 = L1 / norm_k.reshape(B, -1)[:, 0]
+    return L1.mean()
+
+
 if __name__ == "__main__":
     net = Network()
     # img = mge.tensor(np.random.randn(1, 4, 64, 64).astype(np.float32))

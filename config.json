@@ -1,0 +1,13 @@
+{
+ "noise_profile": {
+  "K": [0.0005995267, 0.00868861],
+  "B": [7.11772e-7, 0.0006514934, 0.11492713],
+  "value_scale": 959.0
+ },
+ "camera_value_scale": 959.0,
+ "iso_range": [100.0, 6400.0],
+ "anchor_iso": 1600.0,
+ "output_shape": [512, 512],
+ "target_brighness_range": [0.02, 0.5],
+ "output_scale": 255
+}

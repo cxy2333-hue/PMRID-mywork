@@ -1,2 +1,11 @@
 *.pyc
 *~
+
+# data & generated outputs
+checkpoints/
+dataset/
+im_result/
+imtest/
+models/my_onnx/
+*.log
+__pycache__/
