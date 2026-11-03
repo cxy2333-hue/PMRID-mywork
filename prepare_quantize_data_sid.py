@@ -183,7 +183,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--block_h", type=int, required=True, help="块高度")
     parser.add_argument("--block_w", type=int, required=True, help="块宽度")
-    parser.add_argument("--data_dir", type=str, default="./data/SID_Sony/Sony/short", help="ARW 文件根目录")
+    parser.add_argument("--data_dir", type=str, default="./dataset/Sony/short", help="ARW 文件根目录")
     args = parser.parse_args()
 
     print(f"\n========= 正在处理文件夹：{args.data_dir} =========")

@@ -29,7 +29,7 @@ size, _ = int(m.group(1)), int(m.group(2))
 print(f"检测到输入尺寸: H={size}, W={size}\n")
 print(f"basename: {basename}\n")
 # 自动拼接输出路径：saved_model_dir/basename_int16x8.tflite
-output_tflite_path = os.path.join(saved_model_dir, f"{basename}_int8.tflite")
+output_tflite_path = os.path.join(saved_model_dir, f"{basename}_int16x8.tflite")
 
 calib_data = []
 data_dir = f"calib_data_{size}x{size}"
@@ -51,7 +51,7 @@ converter = tf.lite.TFLiteConverter.from_saved_model(saved_model_dir)
 
 converter.optimizations = [tf.lite.Optimize.DEFAULT]
 converter.representative_dataset = representative_dataset_gen
-converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
+converter.target_spec.supported_ops = [tf.lite.OpsSet.EXPERIMENTAL_TFLITE_BUILTINS_ACTIVATIONS_INT16_WEIGHTS_INT8]
 #   EXPERIMENTAL_TFLITE_BUILTINS_ACTIVATIONS_INT16_WEIGHTS_INT8  TFLITE_BUILTINS_INT8
 # converter.allow_custom_ops = True
 converter.inference_input_type = tf.float32
